@@ -14,8 +14,8 @@ unsafe extern "system" fn evil_thread_routine(_thread_param: *mut c_void) -> u32
 
     GetModuleFileNameA(HINSTANCE(0), &mut proc_path);
     let proc_stem = Path::new(str::from_utf8(&proc_path).unwrap()).file_stem().unwrap();
-    //MessageBoxW(HWND(0), format!("Successfully injected process {}", proc_name.to_str().unwrap()), "Successful Injection Alert", MB_ICONINFORMATION);
-    let file_hdl = CreateFileA(format!("C:\\Users\\Public\\injected_{}!.txt", proc_stem.to_str().unwrap()), FILE_ACCESS_FLAGS(GENERIC_READ | GENERIC_WRITE), 
+    let new_file_path = format!("C:\\Users\\Public\\injected_{}!.txt", proc_stem.to_str().unwrap());
+    let file_hdl = CreateFileA(new_file_path, FILE_ACCESS_FLAGS(GENERIC_READ | GENERIC_WRITE), 
         FILE_SHARE_MODE(0), ptr::null(), CREATE_ALWAYS, FILE_ATTRIBUTE_NORMAL, 
         HANDLE::default()).unwrap();
     CloseHandle(file_hdl);
