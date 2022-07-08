@@ -41,6 +41,7 @@ impl Injector {
         self.lib_path = lib_path;
     }
     
+    // Tries to enable a given privilege in the current process' access token.
     unsafe fn get_privilege(&self, priv_name: &str) -> Result<()> {
 
         let mut token_hdl = HANDLE::default();
@@ -72,7 +73,7 @@ impl Injector {
 
     }
 
-    /// Looks for a process with the same name as the target and returns its PID or 0 if no process is found.
+    // Looks for a process with the same name as the target and returns its PID or 0 if no process is found.
     unsafe fn find_process(&self) -> Result<u32> {
 
         let target_process_as_char_slice_ref = &self.target_process.as_vec_of_win_char()[..];

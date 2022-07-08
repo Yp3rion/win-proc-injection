@@ -2,8 +2,8 @@ use core::slice;
 use windows::Win32::Foundation::CHAR;
 use windows::core::PSTR;
 
-/// Allows conversions to Vec<CHAR> in order to facilitate comparisons with arrays of CHAR as defined in the windows crate.
-/// This is useful since some struct definitions in the windows crate use CHAR arrays as members to represent strings.
+// Allows conversions to Vec<CHAR> in order to facilitate comparisons with arrays of CHAR as defined in the windows crate.
+// This is useful since some struct definitions in the windows crate use CHAR arrays as members to represent strings.
 pub trait AsVecOfWinChar {
 
     fn as_vec_of_win_char(&self) -> Vec<CHAR>;
@@ -20,8 +20,8 @@ impl AsVecOfWinChar for String {
 
 }
 
-/// This trait is intended to provide the possibility to convert string types defined within the windows crate (such as PSTR)
-/// to Rust's String type.
+// This trait is intended to provide the possibility to convert string types defined within the windows crate (such as PSTR)
+// to Rust's String type. Currently unused.
 pub trait AsString {
 
     unsafe fn as_string(&self) -> String;
