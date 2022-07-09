@@ -60,7 +60,7 @@ fn try_main() -> Result<(), Box<dyn Error>> {
 
                 },
                 Ok(()) => {
-                    println!("Injection successful! Check your C:\\Users\\Public folder...");
+                    println!("Injection successful!");
                     break;
                 },
 
